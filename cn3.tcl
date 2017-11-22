@@ -13,11 +13,11 @@ set val(stop)   10.0                         ;# time of simulation end
 set ns [new Simulator]
 
 #Open the NS trace file
-set tracefile [open out.tr w]
+set tracefile [open cn3.tr w]
 $ns trace-all $tracefile
 
 #Open the NAM trace file
-set namfile [open out.nam w]
+set namfile [open cn3.nam w]
 $ns namtrace-all $namfile
 
 #===================================
@@ -96,7 +96,7 @@ proc finish {} {
     exec nam out.nam &
     exit 0
 }
-$ns at $val(stop) "$ns nam-end-wireless $val(stop)"
+$ns at $val(stop) "$ns nam-end-wired $val(stop)"
 $ns at $val(stop) "finish"
 $ns at $val(stop) "puts \"done\" ; $ns halt"
 $ns run
