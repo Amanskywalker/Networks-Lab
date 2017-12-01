@@ -28,17 +28,32 @@ void crc()
 
 int main(int argc, char const *argv[])
 {
-  printf("Enter Polynominal\n");
+  printf("Enter Polynominal : ");
   scanf("%s", t);
-  printf("Generating polynomial is %s\n", g);
+  printf("\nGenerating polynomial is : %s", g);
   a = strlen(t);
   for (e = a; e < a+N-1; e++)
     t[e] = '0';
-  printf("Modified t[u] is %s\n", t);
+  printf("\nModified t[u] is : %s", t);
   crc();
-  printf("Checksum is %s\n", cs);
+  printf("\nChecksum is : %s", cs);
   for (e = a; e < a+N-1; e++)
     t[e] = cs[e-a];
-  printf("Final codeWord is %s\n", t);
+  printf("\n Final codeWord is : %s", t);
+  printf("\nTest for the error detection 1(yes)|0(no) ?");
+  scanf("%d", &e);
+  if (e==1)
+  {
+    printf("\nenter the position wher erroe to be inserted : ");
+    scanf("%d",&e);
+    t[e] = ((t[e]=='0')?'1':'0');
+    printf("\nDate with error is %s \n",t);
+  }
+  crc();
+  for(e = 0; (e < N-1) && (cs[e]!='1') ; e++ )
+  if (e < N-1)
+    printf("error\n");
+  else
+    printf("No error\n");
   return 0;
 }
