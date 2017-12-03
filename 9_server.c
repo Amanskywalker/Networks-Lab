@@ -1,5 +1,5 @@
 // TCP/IP socket programming
-// client code
+// server code
  #include <stdio.h>
  #include <arpa/inet.h>
  #include <fcntl.h>
